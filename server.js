@@ -76,9 +76,11 @@ var initDb = function(callback) {
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
+  res.set('Cache-Control', 'public, max-age=300');
   if (!db) {
     initDb(function(err){});
   }
+    
   if (db) {
     var col = db.collection('counts');
     // Create a document with request IP and current time of request
