@@ -77,7 +77,7 @@ app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
   console.log(JSON.stringify(req.headers));
-  res.set('Cache-Control', 'public, max-age=300');
+  res.set('Cache-Control', 'public, max-age=60');
   if (!db) {
     initDb(function(err){});
   }
